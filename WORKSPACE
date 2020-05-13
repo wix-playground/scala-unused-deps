@@ -53,8 +53,6 @@ http_archive(
 
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
-# needed by DepFixer
-
 RULES_JVM_EXTERNAL_TAG = "3.2"
 
 RULES_JVM_EXTERNAL_SHA = "82262ff4223c5fda6fb7ff8bd63db8131b51b413d26eb49e3131037e79e324af"
@@ -70,7 +68,7 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
     artifacts = [
-        #        "junit:junit:4.12",
+        "junit:junit:4.12",
         "commons-io:commons-io:2.6",
         "commons-cli:commons-cli:1.4",
         "org.eclipse.jgit:org.eclipse.jgit:5.3.1.201904271842-r",
@@ -91,4 +89,9 @@ git_repository(
     name = "depfixer",
     commit = "74661734abc2ba203f165b07e4f64b3a5b16bed3",
     remote = "git@github.com:wix-playground/depfixer.git",
+)
+
+local_repository(
+    name = "ext_b",
+    path = "external_deps/b_workspace",
 )
