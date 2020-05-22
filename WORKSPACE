@@ -66,6 +66,9 @@ http_archive(
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 load("@rules_jvm_external//:specs.bzl", "maven")
+load("@io_bazel_rules_scala//specs2:specs2_junit.bzl", "specs2_junit_repositories")
+
+specs2_junit_repositories()
 
 maven_install(
     artifacts = [
@@ -80,16 +83,22 @@ maven_install(
             exclusions = [
                 "org.specs2:specs2-matcher_2.12",
                 "org.specs2:specs2-common_2.12",
+                "org.scala-lang:scala-library",
             ],
         ),
     ],
     generate_compat_repositories = True,
+    maven_install_json = "@//:maven_install.json",
     repositories = [
         "https://jcenter.bintray.com/",
         "https://maven.google.com",
         "https://repo1.maven.org/maven2",
     ],
 )
+
+load("@maven//:defs.bzl", "pinned_maven_install")
+
+pinned_maven_install()
 
 load("@maven//:compat.bzl", "compat_repositories")
 
