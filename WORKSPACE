@@ -65,6 +65,7 @@ http_archive(
 )
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
+load("@rules_jvm_external//:specs.bzl", "maven")
 
 maven_install(
     artifacts = [
@@ -72,6 +73,15 @@ maven_install(
         "commons-io:commons-io:2.6",
         "commons-cli:commons-cli:1.4",
         "org.eclipse.jgit:org.eclipse.jgit:5.3.1.201904271842-r",
+        maven.artifact(
+            group = "org.specs2",
+            artifact = "specs2-mock_2.12",
+            version = "4.8.3",
+            exclusions = [
+                "org.specs2:specs2-matcher_2.12",
+                "org.specs2:specs2-common_2.12",
+            ],
+        ),
     ],
     generate_compat_repositories = True,
     repositories = [
