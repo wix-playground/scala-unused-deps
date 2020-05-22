@@ -1,3 +1,5 @@
+With specs2-matchers and specs2-common:
+
 ```bash
 ERROR: /home/vaidas/projects/scala-unused-deps/specs2/BUILD:3:1: Couldn't build file specs2/specs2.jar: scala //specs2:specs2 failed (Exit 1)
 error: Target '@io_bazel_rules_scala_org_specs2_specs2_common//:io_bazel_rules_scala_org_specs2_specs2_common' is specified as a dependency to //specs2:specs2 but isn't used, please remove it from the deps.
@@ -8,6 +10,7 @@ You can use the following buildozer command:
 buildozer 'remove deps @io_bazel_rules_scala_org_specs2_specs2_matcher//:io_bazel_rules_scala_org_specs2_specs2_matcher' //specs2:specs2
 ```
 
+Without specs2-matchers and specs2-common:
 ```bash
 ERROR: /home/vaidas/projects/scala-unused-deps/specs2/BUILD:3:1: Couldn't build file specs2/specs2.jar: scala //specs2:specs2 failed (Exit 1)
 specs2/MockingBird.scala:7: error: Symbol 'type org.specs2.reflect.ClassesOf' is missing from the classpath.
